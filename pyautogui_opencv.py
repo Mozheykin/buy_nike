@@ -95,7 +95,7 @@ def cart() -> None:
 
     # Press continue
     logger.info(f'Press continue')
-    coord = opencv_element(name_element='continue')
+    coord = opencv_element(name_element='continue1')
     logger.info(f'Upload coord continue = {coord}')
     pyautogui.moveTo(coord.left + coord.width / 2, coord.top+coord.height / 2, 1)
     pyautogui.click()
@@ -132,7 +132,7 @@ def cart() -> None:
     pyautogui.moveTo(coord.left + coord.width / 2, coord.top+coord.height / 2, 1)
     pyautogui.click()
     pyautogui.write(config.Name_on_card, interval=0.1)
-    
+
     # Press Place Order
     logger.info(f'Press Place Order')
     coord = opencv_element(name_element='place_order')
@@ -150,6 +150,7 @@ def buy_sneakers() -> None:
     with open('data.json', 'r') as file:
         snkrs = json.load(file)
     date_now = datetime.now()
+    upload_json = snkrs.copy()
     for item, value in snkrs.items():
         logger.info(f'Check {item}')
         date_update = datetime.strptime(value[1], '%Y-%m-%d')
@@ -163,7 +164,7 @@ def buy_sneakers() -> None:
             pyautogui.press('enter')
             # Search size
             logger.info(f'Search size')
-            coord = opencv_element(name_element='us_11')
+            coord = opencv_element(name_element=config.Shoe_size)
             logger.info(f'Upload coord sign in = {coord}')
             pyautogui.moveTo(coord.left + coord.width / 2, coord.top+coord.height / 2, 1)
             pyautogui.click()
@@ -176,14 +177,15 @@ def buy_sneakers() -> None:
 
             cart()
             #Screenshot
+            time.sleep(10)
             pyautogui.screenshot(f'{item}.png')
-            snkrs.pop(item, None)
+            upload_json.pop(item, None)
         else: 
             logger.info(f'Date not it {value[1]}')
 
     
     with open('data.json', 'w') as file:
-        json.dump(config.snkrs, file, ensure_ascii=True, indent=4)
+        json.dump(upload_json, file, ensure_ascii=True, indent=4)
 
 
 def main() -> None:

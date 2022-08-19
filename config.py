@@ -4,7 +4,7 @@ url_cart = 'https://www.nike.com/ca/cart'
 email = 'mozheykin.igor@gmail.com'
 password = 'C3mqD7hg3uKr43E'
 
-Shoe_size = 'US 11'
+Shoe_size = 'us_11'
 
 # Paymend method
 Card_number = '5268646648116024'

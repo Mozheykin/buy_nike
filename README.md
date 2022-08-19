@@ -13,6 +13,7 @@ pip install -r requirements.txt
 > email = '' \
 > password = ''
 
+* Change data.json
 > Snikers = {\
 >    'Summit White and Black': ['270', '08.19.2022'],\
 > }
