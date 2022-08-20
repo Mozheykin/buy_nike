@@ -6,11 +6,13 @@ from loguru import logger
 import json
 
 
-def opencv_element(name_element: str) -> tuple:
+def opencv_element(name_element: str) -> tuple | str:
     while True:
         if coord:=pyautogui.locateOnScreen(f'{name_element}.png'):
             return coord
         elif name_element.startswith('us_') or name_element.startswith('buy'):
+            if pyautogui.locateOnScreen('coming_soon.png'):
+                return 'Coming Soon'
             pyautogui.scroll(-1)
         elif name_element == 'continue' or name_element.startswith('place_'):
             pyautogui.scroll(-1)
@@ -151,37 +153,39 @@ def buy_sneakers() -> None:
         snkrs = json.load(file)
     date_now = datetime.now()
     upload_json = snkrs.copy()
-    for item, value in snkrs.items():
-        logger.info(f'Check {item}')
-        date_update = datetime.strptime(value[1], '%Y-%m-%d')
-        if date_now >= date_update:
-            # Go to url sneakers
-            logger.info(f'Enter url sneakers = {value[2]}')
-            with pyautogui.hold('ctrl'):
-                pyautogui.press('l')
-            time.sleep(2)
-            pyautogui.write(value[2], interval=0.1)
-            pyautogui.press('enter')
-            # Search size
-            logger.info(f'Search size')
-            coord = opencv_element(name_element=config.Shoe_size)
-            logger.info(f'Upload coord sign in = {coord}')
-            pyautogui.moveTo(coord.left + coord.width / 2, coord.top+coord.height / 2, 1)
-            pyautogui.click()
-            # Click buy
-            logger.info(f'Click buy')
-            coord = opencv_element(name_element='buy')
-            logger.info(f'Upload coord sign in = {coord}')
-            pyautogui.moveTo(coord.left + coord.width / 2, coord.top+coord.height / 2, 1)
-            pyautogui.click()
+    while upload_json:
+        for item, value in snkrs.items():
+            logger.info(f'Check {item}')
+            date_update = datetime.strptime(value[1], '%Y-%m-%d')
+            if date_now >= date_update:
+                # Go to url sneakers
+                logger.info(f'Enter url sneakers = {value[2]}')
+                with pyautogui.hold('ctrl'):
+                    pyautogui.press('l')
+                time.sleep(2)
+                pyautogui.write(value[2], interval=0.1)
+                pyautogui.press('enter')
+                # Search size
+                logger.info(f'Search size')
+                coord = opencv_element(name_element=config.Shoe_size)
+                if not coord == 'Coming Soon':
+                    logger.info(f'Upload coord sign in = {coord}')
+                    pyautogui.moveTo(coord.left + coord.width / 2, coord.top+coord.height / 2, 1)
+                    pyautogui.click()
+                    # Click buy
+                    logger.info(f'Click buy')
+                    coord = opencv_element(name_element='buy')
+                    logger.info(f'Upload coord sign in = {coord}')
+                    pyautogui.moveTo(coord.left + coord.width / 2, coord.top+coord.height / 2, 1)
+                    pyautogui.click()
 
-            cart()
-            #Screenshot
-            time.sleep(10)
-            pyautogui.screenshot(f'{item}.png')
-            upload_json.pop(item, None)
-        else: 
-            logger.info(f'Date not it {value[1]}')
+                    cart()
+                    #Screenshot
+                    time.sleep(10)
+                    pyautogui.screenshot(f'{item}.png')
+                    upload_json.pop(item, None)
+            else: 
+                logger.info(f'Date not it {value[1]}')
 
     
     with open('data.json', 'w') as file:
