@@ -11,3 +11,6 @@ Card_number = '5268646648116024'
 Name_on_card = 'BILL SMIT'
 MMYY = '09/25'
 CVV = '934'
+
+#Work
+Debug = False
