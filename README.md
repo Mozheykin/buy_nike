@@ -4,22 +4,37 @@
 
 # Install
 * Install python, [download url](https://www.python.org/downloads/)
-* Download and unzip in folder project chrome driver, [download url](https://chromedriver.chromium.org/downloads)
+* Install Git, [download url](https://git-scm.com/downloads)
+* Install LigthShot, [download url](https://app.prntscr.com/ru/download.html)
 * Install requirements command: 
 ```bash
 pip install -r requirements.txt
 ```
 * Change config.py
 > email = '' \
-> password = ''
+> password = '' \
+> Shoe_size = 'us_' \
+> Card_number = '' \
+> Name_on_card = '' \
+> MMYY = '' \
+> CVV = ''
 
 * Change data.json
-> Snikers = {\
->    'Summit White and Black': ['270', '08.19.2022'],\
-> }
-* 
+> {\
+> &nbsp;&nbsp;&nbsp;&nbsp;"***Title***": [ \
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"***Price:*** $180.00", \
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"***Date:*** 2022-08-12",\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"***URL:*** https://www.nike.com/ca/launch/t/air-force-1-low-retro-colour-of-the-month-royal-blue-white"\
+&nbsp;&nbsp;&nbsp;&nbsp;],\
+}
+
 # Info
 To use the script you need:
-1) Registered account
-2) The shipping address is confirmed in the account
-3) Enter your data in the configuration file
+1. Install Python
+2. Install Git
+3. Install LightShot
+4. Customize config file
+5. Update images from the pictures folder to fit your screen
+6. Set up data.json file
+
+**All script is ready to use**
