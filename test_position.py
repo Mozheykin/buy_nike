@@ -3,7 +3,10 @@ import json
 import config
 
 def main() -> None:
-    print(pyautogui.position())
+    position = pyautogui.position()
+    newposition = (position.x + 200, position.y)
+    pyautogui.moveTo(newposition)
+    print(newposition)
     
 
 

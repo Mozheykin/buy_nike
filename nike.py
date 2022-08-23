@@ -5,6 +5,7 @@ from os import path
 import os
 import json
 import datetime
+from config import config
 
 
 class Nike:
@@ -83,6 +84,9 @@ class Nike:
             for item, value in download_json.items():
                 if self.square_date(value[1]):
                     self.open_url(value[2], select_url=True, backspace=True)
+                    position = pyautogui.position()
+                    newposition = (position.x + 200, position.y)
+                    pyautogui.moveTo(newposition)
                     if not self.enter_button(shoe_size, self._dir) == 'Coming Soon':
                         self.enter_button('buy', self._dir)
 
