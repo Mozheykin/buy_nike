@@ -34,7 +34,8 @@ def main() -> None:
 
 
     nike_buy = nike.Nike(email=config.email, password=config.password, cvv=config.CVV, mmyy=config.MMYY, card_number=config.Card_number, name_on_card=config.Name_on_card)
-    nike_buy.login(login_url=config.url_login)
+    if config.Authentication_site:
+        nike_buy.login(login_url=config.url_login)
     nike_buy.buy(data_json='data.json', shoe_size=config.Shoe_size, url_cart=config.url_cart)
 
     

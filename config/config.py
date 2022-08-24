@@ -1,4 +1,7 @@
 #Position browiser
+from multiprocessing import AuthenticationError
+
+
 x = 318
 y = 748
 
@@ -31,3 +34,5 @@ sleep_restart_url = 5
 
 #Work
 Debug = False
+Authentication_site = False
+Credit_card_in_site = True
