@@ -86,7 +86,7 @@ class Nike:
                 if self._square_date(value[1]):
                     self._open_url(value[2], select_url=True, backspace=True)
                     position = pyautogui.position()
-                    newposition = (position.x + 200, position.y)
+                    newposition = (position.x + 200, position.y - 200)
                     pyautogui.moveTo(newposition)
                     if not self._enter_button(shoe_size, self._dir) == 'Coming Soon':
                         self._enter_button('buy', self._dir)
