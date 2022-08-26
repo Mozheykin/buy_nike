@@ -68,8 +68,8 @@ class Nike:
         self._enter_button(name='arrives', _dir=self._dir)
         self._enter_button(name='continue', _dir=self._dir, upload_url=True)
         self._enter_button(name='continue1', _dir=self._dir, upload_url=True)
+        self._enter_write_edittext(name='cvv', _dir=self._dir, text=self.cvv)
         if not config.Credit_card_in_site:
-            self._enter_write_edittext(name='cvv', _dir=self._dir, text=self.cvv)
             self._enter_write_edittext(name='mmyy', _dir=self._dir, text=self.mmyy)
             self._enter_write_edittext(name='card_number', _dir=self._dir, text=self.card_number)
             self._enter_write_edittext(name='name_on_card', _dir=self._dir, text=self.name_on_card)
