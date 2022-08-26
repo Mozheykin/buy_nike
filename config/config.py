@@ -32,6 +32,9 @@ sleep_select_url = 10
 _dir_screenshot = 'screenshot'
 sleep_restart_url = 5
 
+duration = 0 # 0.1
+moveTo_duration = 0 # 1
+
 #Work
 Debug = False
 Authentication_site = False

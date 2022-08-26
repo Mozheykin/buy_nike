@@ -128,7 +128,7 @@ class Nike:
             if coord == 'Coming Soon':
                 return 'Coming Soon'
             logger.info(f'Upload coord {name} = {coord}')
-            pyautogui.moveTo(coord.left + coord.width / 2, coord.top+coord.height / 2, 1)
+            pyautogui.moveTo(coord.left + coord.width / 2, coord.top+coord.height / 2, config.moveTo_duration)
             pyautogui.click()
             if upload_url:
                 #time.sleep(self.sleep_select_url)
@@ -177,7 +177,7 @@ class Nike:
             if backspace:
                 pyautogui.press('backspace')
             logger.info(f'Enter url login = {url}')
-            pyautogui.write(url, interval=0.1)
+            pyautogui.write(url, interval=config.duration)
             pyautogui.press('enter')
         except Exception:
             return False
