@@ -117,7 +117,6 @@ class Nike:
                 pyautogui.scroll(self.scroll)
             elif 'cvv' in name_element:
                 pyautogui.scroll(self.scroll_url_cvv)
-            time.sleep(1)
     
 
     def _enter_button(self, name: str, _dir: str, upload_url:bool=False) -> bool | str:
