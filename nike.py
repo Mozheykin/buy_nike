@@ -130,7 +130,7 @@ class Nike:
             pyautogui.moveTo(coord.left + coord.width / 2, coord.top+coord.height / 2, config.moveTo_duration)
             pyautogui.click()
             if upload_url:
-                #time.sleep(self.sleep_select_url)
+                time.sleep(self.sleep_select_url)
                 self._stay_loade_page()
             return True
         except Exception:
